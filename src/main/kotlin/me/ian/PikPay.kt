@@ -1,6 +1,6 @@
 package me.ian
 
-class PikPay {
+class PikPay(val PicPayToken : String, val sellerToken : String) {
 
 
 
