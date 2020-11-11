@@ -1,10 +1,12 @@
 package me.ian
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import me.ian.cancellations.CancelResponse
 import me.ian.exceptions.PicPayGeneratePaymentException
 import me.ian.exceptions.PicPayPaymentStatusException
-import me.ian.payments.GeneratedPayment
+import me.ian.payments.CreatedPayment
 import me.ian.payments.Payment
+import me.ian.payments.PaymentNotification
 import me.ian.payments.PaymentStatus
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
@@ -12,7 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 
-class PikPay(val picPayToken: String, val sellerToken: String) {
+class PikPay(private val picPayToken: String, val sellerToken: String) {
 
     private val client = OkHttpClient()
     private val mapper = ObjectMapper()
@@ -23,7 +25,7 @@ class PikPay(val picPayToken: String, val sellerToken: String) {
     fun getPaymentStatus(referenceId: String): PaymentStatus? {
         val request = Request.Builder()
             .addHeader("x-picpay-token", picPayToken)
-            .url("${baseURL}/${referenceId}/status")
+            .url("$baseURL/$referenceId/status")
             .get()
             .build()
 
@@ -36,7 +38,7 @@ class PikPay(val picPayToken: String, val sellerToken: String) {
         return mapper.readValue(response.body?.string(), PaymentStatus::class.java)
     }
 
-    fun createPayment(payment: Payment): GeneratedPayment? {
+    fun createPayment(payment: Payment): CreatedPayment? {
         val jsonPayment = mapper.writeValueAsString(payment)
         val requestBody = RequestBody.Companion.create(json, jsonPayment)
 
@@ -53,16 +55,34 @@ class PikPay(val picPayToken: String, val sellerToken: String) {
             throw PicPayGeneratePaymentException(response.message)
         }
 
-        return mapper.readValue(response.body?.string(), GeneratedPayment::class.java)
+        return mapper.readValue(response.body?.string(), CreatedPayment::class.java)
     }
 
-    fun getNotification(body : String)  {
-
-
-
+    fun getNotification(body : String): PaymentNotification {
+        return mapper.readValue(body, PaymentNotification::class.java)
     }
 
+    fun cancelPayment(referenceId: String, paymentNotification: PaymentNotification? = null) : CancelResponse {
 
+        val request  = Request.Builder()
+            .addHeader("x-picpay-token", picPayToken)
+            .url("$baseURL/${referenceId}/cancellations")
+
+        paymentNotification?.let {
+            val authId = mapper.writeValueAsString(paymentNotification.authorizationId)
+            val requestBody = RequestBody.Companion.create(json, authId)
+            request.post(requestBody)
+        }
+
+        val response = client.newCall(request.build()).execute()
+
+        if (response.code != 200) {
+            throw PicPayGeneratePaymentException(response.message)
+        }
+
+
+        return mapper.readValue(response.body?.string(), CancelResponse::class.java)
+    }
 
 
 }

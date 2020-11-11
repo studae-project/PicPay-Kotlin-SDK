@@ -1,4 +1,3 @@
 package me.ian.payments
 
-class PaymentNotification {
-}
+data class PaymentNotification(val referenceId : String, val authorizationId : String)
