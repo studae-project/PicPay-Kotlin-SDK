@@ -14,7 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 
-class PikPay(private val picPayToken: String, val sellerToken: String) {
+class PikPay(private val picPayToken: String) {
 
     private val client = OkHttpClient()
     private val mapper = ObjectMapper()
