@@ -15,21 +15,8 @@ class pikPayTest {
             "teste"
         )
 
-        val buyer = BuyerBuilder(
-            cpf = cpf
-        ).email("email@gmail.com")
-            .
 
-        pikPay.createPayment(
-            Payment(
-                referenceId = referenceId,
-                callBackUrl = callBackUrl,
-                returnUrl = returnUrl,
-                value = 20.0,
-                expiresAt = ZonedDateTime.now(ZoneOffset.UTC).plusDays(daysYouWant).format(DateTimeFormatter.ISO_INSTANT),
-                buyer =
-            )
-        )
+        val paymentNotification = pikPay.getNotification(body = body)
 
     }
 

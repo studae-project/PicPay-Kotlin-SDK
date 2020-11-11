@@ -62,14 +62,14 @@ class PikPay(private val picPayToken: String) {
         return mapper.readValue(body, PaymentNotification::class.java)
     }
 
-    fun cancelPayment(referenceId: String, paymentNotification: PaymentNotification? = null) : CancelResponse {
+    fun cancelPayment(referenceId: String, authorizationId : String? = null) : CancelResponse {
 
         val request  = Request.Builder()
             .addHeader("x-picpay-token", picPayToken)
             .url("$baseURL/${referenceId}/cancellations")
 
-        paymentNotification?.let {
-            val authId = mapper.writeValueAsString(paymentNotification.authorizationId)
+        authorizationId?.let {
+            val authId = mapper.writeValueAsString(authorizationId)
             val requestBody = RequestBody.Companion.create(json, authId)
             request.post(requestBody)
         }
