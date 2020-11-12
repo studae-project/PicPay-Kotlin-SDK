@@ -1,5 +1,5 @@
-package me.ian.payments
+package me.pikpay.payments
 
-import me.ian.enums.PicPayPaymentStatus
+import me.pikpay.enums.PicPayPaymentStatus
 
 data class PaymentStatus(val authorizationId: String, val referenceId: String, val paymentStatus: PicPayPaymentStatus)

@@ -1,4 +1,4 @@
-package me.ian.enums
+package me.pikpay.enums
 
 enum class PicPayPaymentStatus {
 

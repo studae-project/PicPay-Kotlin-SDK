@@ -1,6 +1,6 @@
-package me.ian.builders
+package me.pikpay.builders
 
-import me.ian.buyer.Buyer
+import me.pikpay.buyer.Buyer
 
 class BuyerBuilder(cpf : String) {
 

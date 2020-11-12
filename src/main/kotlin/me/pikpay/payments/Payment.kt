@@ -1,6 +1,6 @@
-package me.ian.payments
+package me.pikpay.payments
 
-import me.ian.buyer.Buyer
+import me.pikpay.buyer.Buyer
 import java.util.*
 
 data class Payment(

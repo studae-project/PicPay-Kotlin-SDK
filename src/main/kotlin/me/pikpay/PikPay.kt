@@ -1,13 +1,13 @@
-package me.ian
+package me.pikpay
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import me.ian.cancellations.CancelResponse
-import me.ian.exceptions.PicPayGeneratePaymentException
-import me.ian.exceptions.PicPayPaymentStatusException
-import me.ian.payments.CreatedPayment
-import me.ian.payments.Payment
-import me.ian.payments.PaymentNotification
-import me.ian.payments.PaymentStatus
+import me.pikpay.cancellations.CancelResponse
+import me.pikpay.exceptions.PicPayGeneratePaymentException
+import me.pikpay.exceptions.PicPayPaymentStatusException
+import me.pikpay.payments.CreatedPayment
+import me.pikpay.payments.Payment
+import me.pikpay.payments.PaymentNotification
+import me.pikpay.payments.PaymentStatus
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient

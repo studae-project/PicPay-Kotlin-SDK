@@ -1,4 +1,4 @@
-package me.ian.buyer
+package me.pikpay.buyer
 
 data class Buyer(
     var firstName : String? = null,

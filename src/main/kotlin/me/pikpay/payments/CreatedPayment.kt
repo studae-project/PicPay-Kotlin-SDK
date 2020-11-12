@@ -1,6 +1,6 @@
-package me.ian.payments
+package me.pikpay.payments
 
-import me.ian.others.QrCode
+import me.pikpay.others.QrCode
 import java.util.*
 
 data class CreatedPayment(val referenceId: String, val paymentUrl: String, val expiresAt: Date, val qrCode: QrCode)
