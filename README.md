@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://dev.wirecard.com.br/v2.0/">
     <img src="https://i.imgur.com/xawrA16.png" alt="Wirecard logo" width=600>
-  </a>
 </p>
 
 This is a unofficial SDK for [PicPay](https://ecommerce.picpay.com/doc/) written in Kotlin. It's quite simple to use and fast.
