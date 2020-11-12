@@ -1,6 +1,6 @@
 # PikPay
 
-This is a SDK for [PicPay](https://ecommerce.picpay.com/doc/) written in Kotlin. It's quite simple to use and fast.
+This is a unofficial SDK for [PicPay](https://ecommerce.picpay.com/doc/) written in Kotlin. It's quite simple to use and fast.
 
 
 ## ❓ How to install?
