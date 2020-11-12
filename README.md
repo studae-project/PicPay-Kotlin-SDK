@@ -25,10 +25,10 @@ and put this dependency:
 
 ```xml
 <dependency>
-	    <groupId>com.github.studae-project</groupId>
-	    <artifactId>PikPay</artifactId>
-	    <version>64204a5c0f</version>
-	</dependency>
+	<groupId>com.github.studae-project</groupId>
+	<artifactId>PikPay</artifactId>
+	<version>64204a5c0f</version>
+</dependency>
 ```
 
 #### Gradle
