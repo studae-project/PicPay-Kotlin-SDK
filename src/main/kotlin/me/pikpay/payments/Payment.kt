@@ -8,6 +8,6 @@ data class Payment(
     val callBackUrl : String,
     val returnUrl : String? = null,
     val value : Double,
-    val expiresAt : Date,
+    val expiresAt : String,
     val buyer : Buyer
 )
