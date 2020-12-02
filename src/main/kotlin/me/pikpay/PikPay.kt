@@ -22,7 +22,7 @@ class PikPay(private val picPayToken: String) {
     private val baseURL = "https://appws.picpay.com/ecommerce/public/payments"
     private val json: MediaType = "application/json; charset=utf-8".toMediaType()
 
-    fun getPaymentStatus(referenceId: String): PaymentStatus {
+    fun getPaymentInfo(referenceId: String): PaymentStatus {
         val request = Request.Builder()
             .addHeader("x-picpay-token", picPayToken)
             .url("$baseURL/$referenceId/status")
